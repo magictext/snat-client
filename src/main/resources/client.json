@@ -1,0 +1,16 @@
+{
+  "serverAddress": "localhost",
+  "port": 7777,
+  "token": "snajdsad",
+  "list": [
+    {
+      "name": "http",
+      "port": "80",
+      "remotePort": "80",
+      "map": {
+        "111": "222",
+        "222": "333"
+      }
+    }
+  ]
+}
