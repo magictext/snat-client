@@ -1,12 +1,13 @@
 {
-  "serverAddress": "localhost",
+  "serverAddress": "snat.xyz",
   "port": 7777,
   "token": "snajdsad",
   "list": [
     {
-      "name": "http",
+      "name": "tcp",
+      "localServer": "localhost",
       "port": "80",
-      "remotePort": "80",
+      "remotePort": "27776",
       "map": {
         "111": "222",
         "222": "333"

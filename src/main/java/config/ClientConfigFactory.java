@@ -20,7 +20,7 @@ public class ClientConfigFactory {
             for (ConfigEntity entity : config.getList()) {
                 Map<Integer, Integer> port = null;
                 try {
-                    port = RangePort.getRangePort(entity.getPort(), entity.getRemotePort());
+                    port = RangePort.getRangePort(entity.getLocalServer(),entity.getPort(), entity.getRemotePort());
                 } catch (RangePortException e) {
                     e.printStackTrace();
                 }

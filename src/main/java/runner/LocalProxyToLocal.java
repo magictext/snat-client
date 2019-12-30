@@ -14,17 +14,19 @@ import lombok.Data;
 import map.ClientChannelMap;
 import org.apache.log4j.Logger;
 
+import java.net.InetSocketAddress;
+
 @Data
 public class LocalProxyToLocal implements Runnable {
 
-    private int port;
-
     private int session;
+
+    InetSocketAddress localAddress;
 
     static EventLoopGroup workerGroup = new NioEventLoopGroup();
 
-    public LocalProxyToLocal(int i,int session) {
-        port=i;
+    public LocalProxyToLocal(InetSocketAddress i, int session) {
+        localAddress=i;
         this.session=session;
 
     }
@@ -46,7 +48,7 @@ public class LocalProxyToLocal implements Runnable {
             ChannelFuture f = null; // (5)
             try {
                 synchronized ("local"){
-                    f = b.connect("47.100.56.65",port).sync();
+                    f = b.connect(localAddress).sync();
                     ClientChannelMap.map.put(session, f.channel());
                     "local".notifyAll();
                     System.out.println("===================I have finished");
