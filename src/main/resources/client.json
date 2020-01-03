@@ -6,8 +6,8 @@
     {
       "name": "tcp",
       "localServer": "localhost",
-      "port": "80",
-      "remotePort": "27776",
+      "port": "80-82",
+      "remotePort": "27776-27778",
       "map": {
         "111": "222",
         "222": "333"

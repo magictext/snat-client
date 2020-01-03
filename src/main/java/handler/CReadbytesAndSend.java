@@ -14,10 +14,17 @@ import org.apache.log4j.Logger;
 @AllArgsConstructor
 public class CReadbytesAndSend extends SimpleChannelInboundHandler {
 
+    //目标channel
     private Channel channel;
 
     private int session;
 
+    private int type=Type.date;
+
+    public CReadbytesAndSend(Channel channel, int session) {
+        this.channel = channel;
+        this.session = session;
+    }
 
     @Override
     public void channelRegistered(ChannelHandlerContext ctx) throws Exception {
@@ -38,7 +45,7 @@ public class CReadbytesAndSend extends SimpleChannelInboundHandler {
             byte b[] = new byte[mes.readableBytes()];
             mes.readBytes(b);
             Logger.getLogger(this.getClass()).debug(new String(b));
-            channel.writeAndFlush(new Data().setType(Type.date).setSession(ChannelHashcode.getChannelHashcode(ctx)).setSession(session).setB(b));
+            channel.writeAndFlush(new Data().setType(type).setSession(ChannelHashcode.getChannelHashcode(ctx)).setSession(session).setB(b));
         }
     }
 }

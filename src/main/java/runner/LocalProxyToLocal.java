@@ -47,12 +47,10 @@ public class LocalProxyToLocal implements Runnable {
             //Start the client.
             ChannelFuture f = null; // (5)
             try {
-                synchronized ("local"){
                     f = b.connect(localAddress).sync();
                     ClientChannelMap.map.put(session, f.channel());
                     "local".notifyAll();
                     System.out.println("===================I have finished");
-                }
             } catch (InterruptedException e) {
                 Logger.getLogger(this.getClass()).error("本地服务器连接失败");
                 e.printStackTrace();
