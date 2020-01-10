@@ -15,7 +15,7 @@ public class ClientMessageEncode extends MessageToByteEncoder<Data> {
                 out.writeInt(msg.type);
                 out.writeBytes(msg.b);
                 break;
-            case 200:
+            case 200: case 201:
                 out.writeInt(msg.type)
                 .writeInt(msg.port)
                 .writeInt(msg.session)

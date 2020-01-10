@@ -1,10 +1,10 @@
 {
-  "serverAddress": "snat.xyz",
+  "serverAddress": "localhost",
   "port": 7777,
   "token": "snajdsad",
   "list": [
     {
-      "name": "tcp",
+      "name": "udp",
       "localServer": "localhost",
       "port": "80-82",
       "remotePort": "27776-27778",

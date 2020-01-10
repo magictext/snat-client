@@ -31,9 +31,9 @@ public class ClientMassageDecoder extends MessageToMessageDecoder<ByteBuf> {
                 Logger.getLogger(this.getClass()).warn("server port: "+list.toString()+" is already in use");
                 Logger.getLogger(this.getClass()).warn("the port above has not been running");
                 break;
-            case 200:
+            case 200: case 201:
                 Data data=new Data();
-                data.setType(200).setPort(in.readInt()).setSession(in.readInt());
+                data.setType(i).setPort(in.readInt()).setSession(in.readInt());
                 b=new byte[in.readableBytes()];
                 in.readBytes(b);
                 data.setB(b);
