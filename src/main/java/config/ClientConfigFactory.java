@@ -10,7 +10,7 @@ import java.util.Map;
 
 //客户端用来获得配置的类
 public class ClientConfigFactory {
-
+        //<Inetsocketaddress:port>
         private static DualHashBidiMap map=new DualHashBidiMap();
 
         public static DualHashBidiMap getMap(){

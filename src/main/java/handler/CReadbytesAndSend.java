@@ -19,7 +19,7 @@ public class CReadbytesAndSend extends SimpleChannelInboundHandler {
 
     private int session;
 
-    private int type=Type.date;
+    private int type=Type.tcp;
 
     public CReadbytesAndSend(Channel channel, int session) {
         this.channel = channel;
@@ -44,7 +44,7 @@ public class CReadbytesAndSend extends SimpleChannelInboundHandler {
             mes = (ByteBuf) msg;
             byte b[] = new byte[mes.readableBytes()];
             mes.readBytes(b);
-            Logger.getLogger(this.getClass()).debug(new String(b));
+            Logger.getLogger(this.getClass()).debug(b.length);
             channel.writeAndFlush(new Data().setType(type).setSession(ChannelHashcode.getChannelHashcode(ctx)).setSession(session).setB(b));
         }
     }

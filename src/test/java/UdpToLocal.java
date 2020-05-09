@@ -1,5 +1,3 @@
-package runner;
-
 import handler.CReadbytesAndSend;
 import io.netty.bootstrap.Bootstrap;
 import io.netty.channel.Channel;

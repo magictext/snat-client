@@ -35,22 +35,6 @@ public class LocalProxyToServer implements Runnable{
 
     public  BlockingDeque deque =new LinkedBlockingDeque();
 
-    public Channel getToServerChannel() {
-        return toServerChannel;
-    }
-
-    public void setToServerChannel(Channel toServerChannel) {
-        this.toServerChannel = toServerChannel;
-    }
-
-    public BlockingDeque getDeque() {
-        return deque;
-    }
-
-    public void setDeque(BlockingDeque deque) {
-        this.deque = deque;
-    }
-
     public void run() {
         EventLoopGroup workerGroup = new NioEventLoopGroup();
             Bootstrap b = new Bootstrap(); // (1)
@@ -61,8 +45,8 @@ public class LocalProxyToServer implements Runnable{
                 @Override
                 public void initChannel(SocketChannel ch) throws Exception {
                     ch.pipeline()
-                            .addLast(new LengthFieldBasedFrameDecoder(65535, 0, 2, 0, 2))
-                            .addLast(new LengthFieldPrepender(2))
+                            .addLast(new LengthFieldBasedFrameDecoder(70000, 0, 4, 0, 4))
+                            .addLast(new LengthFieldPrepender(4))
                             .addLast(new ClientMassageDecoder())
                             .addLast(new ClientMessageEncode())
                             .addLast(new ClientDispacher())

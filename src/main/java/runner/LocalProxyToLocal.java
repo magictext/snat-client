@@ -14,9 +14,7 @@ import io.netty.handler.ssl.SslHandler;
 import lombok.Data;
 import map.ClientChannelMap;
 import org.apache.log4j.Logger;
-import util.SslClientFactory;
 
-import javax.net.ssl.SSLEngine;
 import java.net.InetSocketAddress;
 
 @Data
@@ -52,9 +50,9 @@ public class LocalProxyToLocal implements Runnable {
                     ch.pipeline()
                             .addLast(new ByteArrayEncoder())
                             .addLast(new CReadbytesAndSend(LocalProxyRunner.toServerChannel,session));
-                    if (ssl){
-                        ch.pipeline().addFirst(new SslHandler(SslClientFactory.prepareEngine(localAddress.getHostName(),localAddress.getPort() )));
-                    }
+//                    if (ssl){
+//                        ch.pipeline().addFirst(new SslHandler(SslClientFactory.prepareEngine(localAddress.getHostName(),localAddress.getPort() )));
+//                    }
                 }
             });
             //Start the client.

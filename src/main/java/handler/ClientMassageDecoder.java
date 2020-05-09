@@ -11,6 +11,7 @@ import java.util.List;
 
 
 public class ClientMassageDecoder extends MessageToMessageDecoder<ByteBuf> {
+
     @Override
     public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) throws Exception {
         Logger.getLogger(this.getClass()).warn(cause.getMessage(), cause);
@@ -39,6 +40,10 @@ public class ClientMassageDecoder extends MessageToMessageDecoder<ByteBuf> {
                 data.setB(b);
                 out.add(data);
                 break;
+            case 403:
+                System.err.println("Authorization Error");
+                System.exit(0);
+            break;
         }
     }
 
